@@ -13,11 +13,11 @@ or decreasing order.
 
 where <i>LIST</i> is
 	n	n<sup>th</sup> field, counted from 1
-	n-	n<sup>th </sup>field to end of line
-	n-m	from n<sup>th </sup>to m<sup>th</sup>field
-	-m	from the last field to the m<sup>th</sup>field (reversed)
+	n-	n<sup>th</sup> field to end of line
+	n-m	from n<sup>th</sup> to m<sup>th</sup> field
+	-m	from the last field to the m<sup>th</sup> field (reversed)
 
-	If m > n then the fields are output in reverse order.
+	If m &gt; n then the fields are output in reverse order.
 </pre>
 
 ## Examples
@@ -26,8 +26,10 @@ where <i>LIST</i> is
 	cut -d: -f1,3,1 /etc/passwd	# field 1 repeated
 	cut -d: -f1-,-1 /etc/passwd	# forwards and reversed
 </pre>
+
 ## AUTHOR
 James Sainsbury <toves@sdf.lonestar.org>
-.SH LICENSE
-## Creative Commons CC0
+
+## LICENSE
+Creative Commons CC0
 http://creativecommons.org/publicdomain/zero/1.0/legalcode
