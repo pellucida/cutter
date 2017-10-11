@@ -1,6 +1,6 @@
 .TH CUTTER "1" "Sep 2017" "misc" "User Commands"
 .SH NAME
-cutter \- remove sections from each line of files
+cutter \- remove sections from each line of a file
 .SH SYNOPSIS
 .B cutter
 \fIOPTION\fR... [\fIFILE\fR]...
@@ -11,20 +11,21 @@ Print selected parts of lines from each FILE to standard output.
 .PP
 .TP
 \fB\-d\fR\fIDELIM\fR
-use DELIM instead of TAB for field delimiter
+.nf
+use the characters specified in DELIM instead of TAB
+for field delimiters
 .TP
 \fB\-f\fR\fILIST\fR
-select only these fields;  also print any line
-that contains no delimiter character, unless
-the \fB\-s\fR option is specified
+select only these fields;  also print any line that contains
+no delimiter character, unless the \fB\-s\fR option is specified
 .TP
 \fB\-O\fR\fODELIM\fR
-use ODELIM as the output delimiter
-the default is to use the input delimiter
+use ODELIM as the output delimiter the default is to use the
+(first) input delimiter
 .PP
-Each LIST is made up of one range, or many ranges separated by commas.
-Each field is written in the specified order and is written as many times it appears implicitly
-or explicitly in the LIST.
+Each LIST is made up of one or more ranges separated by commas.
+Each field is written in the specified order and is written as many
+times it appears implicitly or explicitly in the LIST.
 
 Each range is one of:
 .TP
@@ -42,7 +43,7 @@ from the last field to the m'th field (reversed)
 .PP
 If m > n then the fields are output in reverse order.
 .PP
-With no FILE, read standard input.
+When no FILE is specified, read standard input.
 .PP
 .SH EXAMPLES
 cutter -d: -f1,3,1 /etc/passwd # output logname:uid:logname
@@ -53,3 +54,8 @@ Creative Commons CC0
 .br
 http://creativecommons.org/publicdomain/zero/1.0/legalcode
 .SH "SEE ALSO"
+GNU Coreutils (cut)
+.br
+www.gnu.org/software/coreutils
+.br
+www.gnu.org/software/coreutils/manual/coreutils.html#cut-invocation
