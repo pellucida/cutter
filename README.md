@@ -3,13 +3,13 @@
 Print selected fields from input lines to standard output.
 
 Input lines are broken into fields using the specified
-field delimiter (default is <em>tab</em>.)
+field delimiters (default is <em>tab</em>.)
 The fields are numbered 1,2,... and those to be printed are selected 
 by a comma separated of field numbers and ranges of field numbers.
 The fields can be repeated and ranges can be in both increasing
 or decreasing order.
 <pre>
-	cutter -f <i>LIST</i> 
+	cutter -d <i>string-of-delimiters</i> -f <i>LIST</i> [files..]
 
 where <i>LIST</i> is
 	n	n<sup>th</sup> field, counted from 1
@@ -25,6 +25,8 @@ where <i>LIST</i> is
 	cut -d: -f-1 /etc/passwd	# reverse order
 	cut -d: -f1,3,1 /etc/passwd	# field 1 repeated
 	cut -d: -f1-,-1 /etc/passwd	# forwards and reversed
+
+	cut -d:, -f1,3- -O\| /etc/group # split on : and , output with '|' sep
 </pre>
 
 ## AUTHOR
