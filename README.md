@@ -9,7 +9,7 @@ by a comma separated of field numbers and ranges of field numbers.
 The fields can be repeated and ranges can be in both increasing
 or decreasing order.
 
-```
+<pre>
 	cutter -d <i>string-of-delimiters</i> -f <i>LIST</i> [files..]
 
 where <i>LIST</i> is
@@ -19,7 +19,7 @@ where <i>LIST</i> is
 	-m	from the last field to the m<sup>th</sup> field (reversed)
 
 	If m &gt; n then the fields are output in reverse order.
-```
+</pre>
 
 ## Examples
 ```
