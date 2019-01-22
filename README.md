@@ -31,7 +31,7 @@ where <i>LIST</i> is
 ```
 
 ## AUTHOR
-[James Sainsbury](<toves@sdf.lonestar.org>)
+[James Sainsbury](mailto:toves@sdf.lonestar.org)
 
 ## LICENSE
 Creative Commons CC0
