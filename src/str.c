@@ -64,9 +64,10 @@ int	str_fgetline (FILE* input, STR* line) {
 	size_t	size	= line->size;
 	char*	l	= line->elts;
 	while ((ch = fgetc (input)) != EOF && (ch != '\n')) {
-		if (last >= size) {
+		if ((last+1) >= size) { // ensure space for \0
 			str_grow (line, 2*size);
 			size	= line->size;
+			l	= line->elts; // oops: forgot this
 		}
 		l[last++]	= ch;
 	}	
