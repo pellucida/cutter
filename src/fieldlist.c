@@ -14,7 +14,7 @@ int	fieldlist_grow (FIELDLIST* ip, size_t newsize) {
 	if (newsize > oldsize) {
 		elt_t*	news	= realloc (ip->elts, newsize*sizeof(news[0]));
 		if (news) {
-			memset (news, 0, (newsize - oldsize)*sizeof(news[0])) ;
+			memset (&news [oldsize], 0, (newsize - oldsize)*sizeof(news[0])) ;
 			ip->elts	= news;
 			ip->size	= newsize;
 			result	= ok;
