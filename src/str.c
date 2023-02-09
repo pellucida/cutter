@@ -14,7 +14,7 @@ int	str_grow (STR* sp, size_t newsize) {
 	if (newsize > oldsize) {
 		elt_t*	news	= realloc (sp->elts, newsize*sizeof(news[0]));
 		if (news) {
-			memset (news, 0, (newsize - oldsize)*sizeof(news[0]));
+			memset (&news[oldsize], 0, (newsize - oldsize)*sizeof(news[0]));
 			sp->elts	= news;
 			sp->size	= newsize;
 			result	= ok;
