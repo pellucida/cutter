@@ -18,6 +18,10 @@
 # include	"strlist.h"
 # include	"str.h"
 
+void	process_line (FILE* output, int outdel, int silent, FIELDLIST* flds,  STRLIST* cflds);
+int	process_file (FILE* input, FILE* output, char* indel, int outdel, int silent, FIELDLIST* flds);
+int	process_fields (STR* line, char* delimiter, STRLIST* cflds);
+
 enum	{
 	MAXFIELDS	= 1024,
 	MAXLINE		= 4096,
@@ -159,16 +163,17 @@ int	process_file (FILE* input, FILE* output, char* indel, int outdel, int silent
 	STR*	line	= 0;
 	STRLIST*	cflds	= 0;
 	int	result	= str_Create (&line, MAXLINE);
-	int	result2	= strlist_Create (&cflds, MAXFIELDS); 
-
-	while (str_fgetline (input, line)!= 0) {
+	if (result==ok) {
+		result	= strlist_Create (&cflds, MAXFIELDS); 
+	}
+	if (result==ok) while (str_fgetline (input, line)!= 0) {
 		process_fields (line, indel, cflds);
 		process_line (output, outdel, silent, flds, cflds);
 		str_clear (line);
 	}
 	strlist_Delete (&cflds);
 	str_Delete (&line);
-	return	ok;
+	return	result;
 }
 
 /*
@@ -178,18 +183,19 @@ int	process_file (FILE* input, FILE* output, char* indel, int outdel, int silent
 // A line without delimiters will have _count == 1
 */
 int	process_fields (STR* line, char* delimiter, STRLIST* cflds) {
+	int	result	= ok;
 	char*	s	= str_asciz (line);
 	char*	t	= strpbrk (s, delimiter);
-	int	result	= strlist_clear(cflds);
+	strlist_clear(cflds);
 	result	= strlist_append (cflds, s);
-	if (t!=0) do {
+	while (t!=0 && result==ok) {
                 result  = strlist_append (cflds, s);
                 t       = strpbrk (s, delimiter);
                 if (t) {
                         *t      = '\0';
                         s       = t+1;
                 }
-        } while (t != 0);
+        }
 
-	return	ok;
+	return	result;
 }

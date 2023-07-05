@@ -28,7 +28,7 @@ static	inline	int	strlist_get (STRLIST* il, size_t i, char** eltp) {
 
 int	strlist_append (STRLIST* il, char* n);
 
-static	inline	int	strlist_clear(STRLIST* il) {
+static	inline	void	strlist_clear(STRLIST* il) {
 	il->last	= 0;
 }
 # endif

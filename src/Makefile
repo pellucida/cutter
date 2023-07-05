@@ -4,7 +4,7 @@ STROBJ=fieldlist.o field.o strlist.o str.o
 OBJ=cutter.o
 
 PROG=cutter
-CFLAGS=-g
+CFLAGS=-g -Wall
 LDFLAGS=-g
 $(PROG): $(OBJ) $(STROBJ) 
 	$(CC) -o $(PROG) $(OBJ) $(STROBJ)
